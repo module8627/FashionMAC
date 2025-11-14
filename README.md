@@ -4,5 +4,5 @@ Garment-centric fashion image generation aims to synthesize realistic and contro
 ## 🏷️ Overview
 ![Framework](assets/images/Framework.png)
 
-## Code
+## 🧭 Code
 We will open source the code soon.
