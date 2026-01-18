@@ -120,10 +120,10 @@ def load_and_process_image(image_path, height, width, is_mask=False, device="cud
     return tensor.to(device=device, dtype=dtype)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='FashionMAC Single Image Inference (Pre-computed Densepose)')
+    parser = argparse.ArgumentParser(description='FashionMAC Inference')
     
     parser.add_argument('--model_ckpt', type=str, default="ckpt/FashionMAC_unet.pt")
-    parser.add_argument('--unet_pretrained_path', type=str, default="/mnt/16t/ljx/workspace/models/stable-diffusion-v1-4")
+    parser.add_argument('--unet_pretrained_path', type=str, default="ckpt/stable-diffusion-v1-4")
     parser.add_argument('--vae_path', type=str, default="ckpt/sd-vae-ft-ema/")
     
     parser.add_argument('--output_path', type=str, default="inference_result")
@@ -137,19 +137,19 @@ if __name__ == "__main__":
 
     parser.add_argument('--cloth_path', type=str, required=True, help="Path to the clothing image")
     parser.add_argument('--cloth_mask_path', type=str, required=True, help="Path to the clothing mask")
-    parser.add_argument('--face_path', type=str, required=True, help="Path to the face/person image (background)")
+    parser.add_argument('--face_path', type=str, required=True, help="Path to the face image")
     parser.add_argument('--pose_path', type=str, required=True, help="Path to the densepose image")
     
     parser.add_argument('--image_prompt', type=str, default="A model wearing a shirt", help="Global image prompt")
-    parser.add_argument('--attr_background', type=str, default="white background")
-    parser.add_argument('--attr_skin', type=str, default="fair skin")
-    parser.add_argument('--attr_accessories', type=str, default="no accessories")
-    parser.add_argument('--attr_expression', type=str, default="calm expression")
-    parser.add_argument('--attr_eyebrows', type=str, default="medium eyebrows")
-    parser.add_argument('--attr_eyes', type=str, default="brown eyes")
-    parser.add_argument('--attr_face_shape', type=str, default="oval face")
-    parser.add_argument('--attr_hair', type=str, default="medium-length brown hair")
-    parser.add_argument('--attr_mouth', type=str, default="thin lips, mouth closed, natural color lips")
+    parser.add_argument('--attr_background', type=str, default="white background", help="Description for background")
+    parser.add_argument('--attr_skin', type=str, default="dark brown skin", help="Description for skin")
+    parser.add_argument('--attr_accessories', type=str, default="no accessories", help="Description for accessories")
+    parser.add_argument('--attr_expression', type=str, default="calm expression", help="Description for expression")
+    parser.add_argument('--attr_eyebrows', type=str, default="medium eyebrows", help="Description for eyebrows")
+    parser.add_argument('--attr_eyes', type=str, default="brown eyes", help="Description for eyes")
+    parser.add_argument('--attr_face_shape', type=str, default="oval-shaped face", help="Description for face shape")
+    parser.add_argument('--attr_hair', type=str, default="medium-length brown hair", help="Description for hair")
+    parser.add_argument('--attr_mouth', type=str, default="thin lips, mouth closed, natural color lips", help="Description for mouth")
 
     args = parser.parse_args()
 
@@ -190,7 +190,7 @@ if __name__ == "__main__":
     image_txt = args.image_prompt + ", ".join(attr_list) + ', best quality, high quality'
     negative_prompt = 'bare, naked, nude, undressed, monochrome, lowres, bad anatomy, worst quality, low quality'
     
-    filename = os.path.basename(args.cloth_path).split('.')[0] + "_tryon.png"
+    filename = os.path.basename(args.cloth_path).split('.')[0] + "_tryon.jpg"
 
     with torch.no_grad():
         tryon_output = pipe_tryon(
