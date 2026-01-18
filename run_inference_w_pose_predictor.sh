@@ -1,0 +1,23 @@
+python inference_w_pose_predictor.py \
+    --device "cuda:1" \
+    --output_path "results" \
+    --cloth_path "assets/input_images/cloth.jpg" \
+    --cloth_mask_path "assets/input_images/cloth_mask.jpg" \
+    --face_path "assets/input_images/face.jpg" \
+    --image_prompt "a woman wearing a blue t-shirt with the word dkny on it" \
+    --attr_background "white background" \
+    --attr_skin "dark brown skin" \
+    --attr_accessories "no accessories" \
+    --attr_expression "calm expression" \
+    --attr_eyebrows "medium eyebrows" \
+    --attr_eyes "brown eyes" \
+    --attr_face_shape "oval-shaped face" \
+    --attr_hair "medium-length brown curly hair" \
+    --attr_mouth "thin lips, mouth closed, natural color lips" \
+    --model_ckpt "ckpt/FashionMAC_unet.pt" \
+    --unet_pretrained_path "ckpt/stable-diffusion-v1-4" \
+    --vae_path "ckpt/sd-vae-ft-ema/" \
+    --use_face True \
+    --pose_unet_path "ckpt/pose_predictor/pose_predictor_unet.pt" \
+    --vae_pose_config_path "ckpt/pose_predictor/vqvae_config.yaml" \
+    --vae_pose_path "ckpt/pose_predictor/vqvae_f8_step=58239.ckpt"
