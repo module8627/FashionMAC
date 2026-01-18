@@ -41,6 +41,7 @@ To run the inference, you need to download our pre-trained checkpoints and the b
 **1. FashionMAC Checkpoints**
 Download our trained models from the following link:
 [FashionMAC Models](https://drive.google.com/file/d/1CAjJpNnykrSXsYoK-y7Zp63XmUpdJO_f/view?usp=drive_link)
+
 **2. Base Models**
 Please download the Stable Diffusion v1.4(or SD1.5) and VAE weights from Hugging Face and place them in the `ckpt/` directory:
 
@@ -76,6 +77,7 @@ FashionMAC/
 
 ## 🚀 Inference
 We provide two inference modes. 
+
 **1.Inference**
 If you already have a densepose image (e.g., `assets/input_images/densepose.jpg`), you can use this mode.
 ```bash
