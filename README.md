@@ -79,12 +79,14 @@ FashionMAC/
 We provide two inference modes. 
 
 **1.Inference**
+
 If you already have a densepose image (e.g., `assets/input_images/densepose.jpg`), you can use this mode.
 ```bash
 bash run_inference.sh
 ```
 
 **2. Inference with Pose Predictor**
+
 This mode automatically generates a densepose condition based on the input garment and then generates the final image.
 ```bash
 bash run_inference_w_pose_predictor.sh
@@ -101,7 +103,7 @@ The downloaded evaluation dataset is organized as follows:
 viton_test/
 ├── cloth/                  # Segmented garment images
 ├── cloth_mask/             # Binary masks for the Segmented garments
-├── face/                   # Reference face images for identity guidance            # Text descriptions
+├── face/                   # Reference face images for identity guidance          
 ├── global_prompts/         # Overall captions for the showcase images
 └── local_prompts/          # Fine-grained attributes (e.g., skin, hair)
 ```
