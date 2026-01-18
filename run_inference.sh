@@ -18,4 +18,4 @@ python inference.py \
     --model_ckpt "ckpt/FashionMAC_unet.pt" \
     --unet_pretrained_path "ckpt/stable-diffusion-v1-4" \
     --vae_path "ckpt/sd-vae-ft-ema/" \
-    --use_face False \
+    --use_face True \
